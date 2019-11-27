@@ -1,0 +1,171 @@
+.content_box{
+    width: 300px;
+    height: 300px;
+    border: 1px solid black;
+    margin: 10px;
+}
+.content_box_item{
+    width: 100px;
+}
+.props-draggers {
+    width: 100px;
+    height: 100px;
+    background: #ccc;
+    line-height: 100px;
+    text-align: center;
+}
+.changediv{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.beh_btn{
+    width: fit-content;
+    padding: 2px 5px;
+    background: #5959fa;
+    color: #fff;
+    border-radius: 3px;
+    text-align: center;
+    padding: 1px 10px;
+    margin: 0 0px 0 10px;
+    cursor: pointer;
+}
+.beh_btn:hover{
+    background: #57a0d1;
+}
+
+.flex{
+    display:flex;
+}
+.flex_1{
+    flex:1;
+}
+.grid{
+    display: grid;
+    grid-template-rows: min-content;
+    height: 100%;
+}
+
+*::-webkit-scrollbar{
+    width: 7px;
+    height: 7px;
+}
+*::-webkit-scrollbar-button{
+    height: 0;
+}
+*::-webkit-scrollbar-thumb{
+    background: #eee;
+    border-radius: 5px;
+    box-shadow:inset 0 0 5px #aaa;
+}
+.opration{
+    -webkit-appearance: none;
+    background: inherit;
+    border: inherit;
+    outline:none;
+    margin: 0;
+    padding: 0;
+    cursor:none;
+}
+.opration:focus{
+    outline:0;
+}
+
+.root_root{
+    width:100%;
+    height: 100vh;
+    display:flex;
+}
+
+.root_control{
+    display:grid;
+    grid-template-rows: min-content min-content;
+    flex:1;
+    height:100%;
+    background: #FAFAFA;
+    overflow: auto;
+}
+.root_content{
+    flex:5;
+    height:100%;
+    background: #F3F5F6;
+    overflow: auto;
+}
+.root_setting{
+    flex:1;
+    height:100%;
+    background: #FFFFFF;
+    overflow: auto;
+}
+
+.control_item{
+    white-space: nowrap;
+    margin: 3px;
+    padding: 0px 5px;
+    font-size: 14px;
+    line-height: 26px;
+    overflow: hidden;
+    color: #333;
+    text-overflow: ellipsis;
+    background: #f4f6fc;
+    cursor: pointer;
+    box-sizing: border-box;
+    user-select: none;
+    border:1px dashed #f4f6fc;
+}
+.control_item:hover{
+    border:1px dashed #409eff;
+    color:#409eff;
+}
+
+.form-control-sm {
+    height: 24px !important;
+    font-size: 16px !important;
+    color: #000 !important;
+}
+
+.ant-input-sm{
+    font-size: 16px !important;
+    color: #000 !important;
+}
+
+.oprationcobu{
+    padding: 1.5px 7px 0px 5px;
+    background: rgb(255, 255, 255);
+    height: 100%;
+    color: rgb(147, 147, 147);
+    line-height: 20px;
+    border-radius: 50%;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.card-container .ant-tabs-tab-prev {
+    display: none;
+}
+
+.card-container .ant-tabs-tab-next {
+    display: none;
+}
+
+.card-container .ant-tabs-nav-container {
+    padding: 0;
+}
+.card-container .ant-tabs-bar{
+    margin: 0 !important;
+}
+.card-container .ant-tabs-nav{
+    width:100%;
+}
+.card-container .ant-tabs-nav > div{
+    display: flex;
+}
+.card-container .ant-tabs-tab{
+    margin: 0 !important;
+    flex: 1;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
