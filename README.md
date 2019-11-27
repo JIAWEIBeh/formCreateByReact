@@ -20,16 +20,10 @@ npm install
 npm start
 ```
 
-## Build
+- Build application
 
 ``` bash
 npm run build
-```
-
-## Testing
-
-```bash
-npm test
 ```
 
 ## Learn More
