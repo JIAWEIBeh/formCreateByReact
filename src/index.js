@@ -4,7 +4,7 @@ import './assets/css/index.css';
 import './assets/css/share.css';
 import * as util from './utils/utils'
 import Home from './Component/Home';
-import Move from './Component/Move';
+//import Move from './Component/Move';
 import Preview from './Component/Preview';
 import FormatText from './Component/FormatText';
 import DraggerTest from './Component/DraggerTest';
@@ -31,7 +31,7 @@ if(hashName === 'home'){
         ApplyComponent = DraggerTest;
     }
 }else{
-    ApplyComponent = Move;
+    ApplyComponent = Home;
 }
 
 ReactDOM.render(<ApplyComponent></ApplyComponent>, document.getElementById('root'));
