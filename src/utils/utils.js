@@ -87,7 +87,7 @@ export function findItem(arr,type){//获得type所在路径
 							}
 						}
 					}else{
-						if((typeof arr[i][x] === 'object')&&arr[i][x].length>0){
+						if((typeof arr[i][x] === 'object')&&arr[i][x]&&arr[i][x].length>0){
 							for(let y in arr[i][x]){
 								let result;
 								if(path){
@@ -100,7 +100,7 @@ export function findItem(arr,type){//获得type所在路径
 								}
 							}
 						}else{
-							if((typeof arr[i][x] === 'object')&&!arr[i][x].length){
+							if((typeof arr[i][x] === 'object')&&arr[i][x]&&!arr[i][x].length){
 								for(let y in arr[i][x]){
 									let result;
 									if(path){
