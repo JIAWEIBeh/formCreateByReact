@@ -63,6 +63,96 @@ export const parseBounds = (bounds) => {
 export const isNumber = (things) => {
     return typeof things === 'number' ? true : false
 }
+
+export function findJSON(data = {},findFn = () => {return false},flag = false){
+	let result;
+	try{
+		if(!flag){
+			data = JSON.parse(JSON.stringify(data));
+		}
+		if(isJSONObject(data)){
+			if(findFn(data)){
+				result = data;
+			}else{
+				for(let i in data){
+					if(findFn(data[i])){
+						result = data[i];
+					}else{
+						let findData = findJSON(data[i],findFn,flag);
+						if(findData){
+							result = findData;
+						}
+					}
+				}
+			}
+		}else if(isJSONArray(data)){
+			for(let i in data){
+				if(findFn(data[i])){
+					result = data[i];
+				}else{
+					let findData = findJSON(data[i],findFn,flag);
+					if(findData){
+						result = findData;
+					}
+				}
+			}
+		}else{
+			
+		}
+	}catch(e){
+		result = null;
+	}
+	return result;
+}
+
+export function isJSONObject(object){
+	if(object&&typeof object === 'object'&&!object.length&&object.length!=0){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+export function isJSONArray(object){
+	if(object&&typeof object === 'object'&&object.length>=0){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+export function findList(data = [],startType = "",flag = false,findFn = () => {return false}){
+	let result;
+	try{
+		if(!flag){
+			data = JSON.parse(JSON.stringify(data));
+		}
+		startType.split(".").map(item => {
+			if(item&&item.indexOf("{")>-1){
+				let key = "";
+				let value = "";
+				for(let i in JSON.parse(item)){
+					key = i;
+					value = JSON.parse(item)[i];
+				}
+				data = findList(data,'',true,function(child){return child[key] === value});
+			}else if(item){
+				data = data[item]?data[item]:[]
+			}
+		})
+		if(isJSONArray(data)){
+			result = data.find(findFn);
+		}else{
+			result = data;
+		}
+	}catch(e){
+		console.log(e);
+		result = {};
+	}
+	
+	return result?result:data;
+}
+
 /**
  * 
  * @param {数据源} arr 

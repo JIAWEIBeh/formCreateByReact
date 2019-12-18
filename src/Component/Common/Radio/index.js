@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import {SortableContainer, SortableElement, SortableHandle} from 'react-sortable-hoc';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import * as fa from '@fortawesome/free-solid-svg-icons'
@@ -75,13 +76,14 @@ class Radio extends React.Component{
             isProhibit:props.isProhibit?props.isProhibit:false
         };
     }
-    componentWillReceiveProps(changeProps){
-        if(JSON.stringify(this.props.item)!==JSON.stringify(changeProps.item)){
-            this.setState({
-                item:changeProps.item?changeProps.item:this.props.item,
-                isProhibit:changeProps.isProhibit?changeProps.isProhibit:false
-            });
-        }
+    componentDidMount(){
+    }
+
+    UNSAFE_componentWillReceiveProps(changeProps){
+        this.setState({
+            item:changeProps.item?changeProps.item:this.props.item,
+            isProhibit:changeProps.isProhibit?changeProps.isProhibit:false
+        });
     }
     createOption(){
         let option = [];
@@ -153,7 +155,7 @@ class Radio extends React.Component{
                 }} isvis={this.state.optionModelVis} />
             </div>)
         }else if(this.props.status === 'edit'){
-            return (<Antd.Radio.Group style={lineNumStyle(2)} size="small" value={this.state.item.value||''} onChange={e => {
+            return (<Antd.Radio.Group style={lineNumStyle(this.state.item.optionLayout?this.state.item.optionLayout:2)} size="small" value={this.state.item.value||''} onChange={e => {
                 this.props.onChange(e.target.value,e);
             }}>
                 {this.createOption()}
@@ -161,7 +163,7 @@ class Radio extends React.Component{
         }else if(this.props.status === 'show'){
             return (<div>{this.state.item.value||''}</div>)
         }else{
-            return (<Antd.Radio.Group style={lineNumStyle(2)} size="small" value={this.state.item.value||''} onChange={e => {
+            return (<Antd.Radio.Group style={lineNumStyle(this.state.item.optionLayout?this.state.item.optionLayout:2)} size="small" value={this.state.item.value||''} onChange={e => {
                 this.props.onChange(e.target.value,e);
             }}>
                 {this.createOption()}

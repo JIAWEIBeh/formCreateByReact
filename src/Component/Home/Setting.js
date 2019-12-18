@@ -9,7 +9,9 @@ const settingList = {
     isProhibit:{dataChangeType:'isProhibit',type:'checkbox',title:'是否禁用'},
     isShow:{dataChangeType:'isShow',type:'checkbox',title:'是否显示'},
     isMustEdit:{dataChangeType:'isMustEdit',type:'checkbox',title:'是否必填'},
-    labelPaddingLeft:{dataChangeType:'labelPaddingLeft',type:'number',min:0,title:'标签左边距'}
+    labelPaddingLeft:{dataChangeType:'labelPaddingLeft',type:'number',min:0,title:'标签左边距'},
+    optionLayout:{dataChangeType:'optionLayout',type:'number',min:1,max:8,title:'选项布局'},
+    formLayout:{dataChangeType:'optionLayout',type:'number',min:1,max:8,title:'选项布局'}
 }
 const canUse = {
     max:'',
@@ -138,7 +140,7 @@ export default class Setting extends React.Component{
             return result;
         }else if(item.type === 'radio'||item.type === 'checkbox'){
             let result = [];
-            let data = ['width','labelWidth','labelAlign','labelPaddingLeft','isProhibit','isShow','isMustEdit'];
+            let data = ['width','optionLayout','labelWidth','labelAlign','labelPaddingLeft','isProhibit','isShow','isMustEdit'];
             for(let i in data){
                 result.push(this.settingEdit(settingList[data[i]],item,i,this.onChange.bind(this)))
             }
@@ -180,6 +182,7 @@ export default class Setting extends React.Component{
                             if(sectionData.sectionForm[num]){
                                 sectionData.sectionForm[num][i] = changeType[i];
                             }
+                            return '';
                         })
                     }
                     this.props.onChange(data,true);

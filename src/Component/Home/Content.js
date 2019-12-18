@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import * as fa from '@fortawesome/free-solid-svg-icons'
 import arrayMove from 'array-move';
 import * as util from '../../utils/utils';
-import Preview from '../Preview';
 import Input from '../Common/Input';
 import Radio from '../Common/Radio';
 
@@ -57,7 +56,7 @@ const Item = SortableElement(({item,content,indexs}) => {
     "border": isChoose?"2px solid rgb(0, 184, 255)":"",
     "background": "rgb(255, 255, 255)"}}>
         <div style={{"display": "flex","marginBottom": "5px"}}>
-            <div style={{margin: '0 8px'}}>{indexs+1}</div>
+            {/*<div style={{margin: '0 8px'}}>{indexs+1}</div>*/}
             <div style={{"flex": "1"}}>
                 <Antd.Input size="small" value={item.title||''} onChange={e => {
                     content.onChange(item,{title:e.target.value});
@@ -96,9 +95,6 @@ const Form = SortableContainer(({items,content}) => {
 });
 
 export default class Content extends React.Component{
-    componentDidMount(){
-
-    }
 	constructor(props) {
         super(props);
         this.state = {
@@ -142,7 +138,7 @@ export default class Content extends React.Component{
     }
 
     render() {
-        let Antd = window.Antd;
+        //let Antd = window.Antd;
         let chooseSection = util.resultObjData(this.props.data,{id:this.props.data.chooseSection},true);
         return (<div className={"root_content"} onClick={e => {
                 this.onChangeLasting({chooseItem:''});
@@ -154,29 +150,6 @@ export default class Content extends React.Component{
                     axis="xy" 
                     pressDelay={0} 
                     onSortEnd={this.onSortEnd} />
-                <Antd.Button type="primary" style={{
-                    "position": "fixed",
-                    "bottom": "0",
-                    "right": "calc(100% / 7)"}}
-                    onClick={e => {
-                        if(!this.state.previewShow){
-                            this.setState({
-                                previewShow:true
-                            })
-                        }else{
-                            this.setState({
-                                previewShow:false
-                            })
-                        }
-                    }}
-                >预览</Antd.Button>
-                <Preview previewShow={this.state.previewShow?this.state.previewShow:false} onChange={(type,data) => {
-                    if(type === "state"){
-                        this.setState({
-                            previewShow:data
-                        })
-                    }
-                }} {...{data:this.props.data}}/>
         </div>)
     }
 }

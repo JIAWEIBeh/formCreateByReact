@@ -8,13 +8,11 @@ class Input extends React.Component{
             isProhibit:props.isProhibit?props.isProhibit:false
         };
     }
-    componentWillReceiveProps(changeProps){
-        if(JSON.stringify(this.props.item)!==JSON.stringify(changeProps.item)){
-            this.setState({
-            	item:changeProps.item?changeProps.item:this.props.item,
-                isProhibit:changeProps.isProhibit?changeProps.isProhibit:false
-            });
-        }
+    UNSAFE_componentWillReceiveProps(changeProps){
+        this.setState({
+            item:changeProps.item?changeProps.item:this.props.item,
+            isProhibit:changeProps.isProhibit?changeProps.isProhibit:false
+        });
     }
     render() {
     	let Antd = window.Antd;

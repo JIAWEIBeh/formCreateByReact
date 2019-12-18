@@ -12,7 +12,7 @@ export default class Home extends React.Component{
             ContentData:{
                 chooseSection:'section1',
             	dataJSON:{
-                    section:[{id:'section1',sectionForm:[]}]
+                    section:[{id:'section1',title:'测试',sectionForm:[]}]
                 }
             }
         };

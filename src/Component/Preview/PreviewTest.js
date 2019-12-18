@@ -41,11 +41,7 @@ export default class Preview extends React.Component{
 
     onChange(item,changeType){
     	let data = this.state.dataJSON;
-    	let searchSection = JSON.stringify({id:this.props.data.chooseSection});
-    	let searchItem = JSON.stringify({id:item.id});
-    	let itemData = util.findList(data,`section.${searchSection}.sectionForm.${searchItem}`,true);
-    	//let itemData = util.findList(data,'section.{"id":"'+this.props.data.chooseSection+'"}.sectionForm',data => {return data.id === item.id},true);
-        //let itemData = util.resultObjData(data,{id:item.id},true);
+        let itemData = util.resultObjData(data,{id:item.id},true);
         for(let i in changeType){
             itemData[i] = changeType[i];
         }
@@ -58,10 +54,21 @@ export default class Preview extends React.Component{
     	return createControl(item,{status:'edit',index:index},this)
     }
 
+    sectionList({key,index,style}){
+        return 
+    }
     formatSectionForm(){
     	let result = [];
     	let sectionData = this.state.dataJSON.section;
-    	sectionData.map((section,index) => {
+        result.push(<List
+            style={{width:'100%',height:'100%',outline:'none'}}
+            width={2000}
+            height={2000}
+            rowCount={sectionData.length}
+            rowHeight={40}
+            rowRenderer={this.sectionList.bind(this)}
+        />);
+    	/*sectionData.map((section,index) => {
     		result.push(<div key={'sitem'+index} className={'section-content'}>
 				<div className={'section-title'}>
 					{section.title}
@@ -71,7 +78,7 @@ export default class Preview extends React.Component{
 				</div>
 			</div>);
 			return '';
-    	})
+    	})*/
     	return result;
     }
 

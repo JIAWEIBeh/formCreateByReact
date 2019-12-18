@@ -174,3 +174,44 @@
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+
+.form-content{
+    display:grid;
+    width: 60%;
+    margin: 0px auto 0 auto;
+    padding-top: 10px;
+    height:100%;
+    grid-auto-rows: max-content;
+}
+
+.section-content{
+    display:grid;
+}
+.section-title{
+    font-size: 18px;
+    font-weight: 700;
+    border-bottom: 1px solid #1890ff;
+    padding: 0 10px 5px 5px;
+}
+.section-control{
+    display:grid;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+.item-content{
+    display:flex;
+    padding-bottom: 18px;
+}
+.item-title{
+    flex: 3;
+    overflow: hidden;
+}
+.item-title label{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width:100%;
+}
+.item-control{
+    flex: 9;
+}

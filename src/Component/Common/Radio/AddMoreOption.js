@@ -8,7 +8,7 @@ export default class AddMoreOption extends React.Component{
             textValue:''
         };
     }
-    componentWillReceiveProps(changeProps){
+    UNSAFE_componentWillReceiveProps(changeProps){
         if(this.props.isvis!==changeProps.isvis){
             this.setState({
                 isVisible:changeProps.isvis?changeProps.isvis:false,
